@@ -24,3 +24,42 @@ Global
 		SolutionGuid = {1FDF0183-1933-4FC8-88ED-A80E31E5BF57}
 	EndGlobalSection
 EndGlobal
+
+
+@page "/citybuttons"
+@using YourNamespace // Replace with the namespace of CityRepository
+@inject NavigationManager Navigation
+
+<h3>Cities</h3>
+
+<!-- City Buttons -->
+<div>
+    @foreach (var city in CityRepository.GetCities())
+    {
+        <button class="btn btn-primary m-1" @onclick="() => NavigateToCity(city)">
+            @city
+        </button>
+    }
+</div>
+
+<hr />
+
+<!-- Placeholder for Server List -->
+<h3>Server List</h3>
+<p>The server list content will be displayed here.</p>
+
+@code {
+    /// <summary>
+    /// Navigates to a city-specific route or handles city button click.
+    /// </summary>
+    /// <param name="city">Name of the city clicked.</param>
+    private void NavigateToCity(string city)
+    {
+        // Example: Navigate to a route associated with the city (if applicable)
+        Navigation.NavigateTo($"/city/{city}");
+    }
+}
+
+
+
+
